@@ -24,7 +24,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: const FaIcon(
-          FontAwesomeIcons.apple,
+          FontAwesomeIcons.at,
           color: Colors.black,
           size: 40,
         ),
@@ -40,25 +40,45 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
           Offstage(
             offstage: _selectedIndex != 1,
             child: const Center(
-              child: Text("Searching"),
+              child: Text(
+                "Searching",
+                style: TextStyle(
+                  fontSize: 50,
+                ),
+              ),
             ),
           ),
           Offstage(
             offstage: _selectedIndex != 2,
             child: const Center(
-              child: Text("Add"),
+              child: Text(
+                "Add",
+                style: TextStyle(
+                  fontSize: 50,
+                ),
+              ),
             ),
           ),
           Offstage(
             offstage: _selectedIndex != 3,
             child: const Center(
-              child: Text("Likes"),
+              child: Text(
+                "Likes",
+                style: TextStyle(
+                  fontSize: 50,
+                ),
+              ),
             ),
           ),
           Offstage(
             offstage: _selectedIndex != 4,
             child: const Center(
-              child: Text("Profile"),
+              child: Text(
+                "Profile",
+                style: TextStyle(
+                  fontSize: 50,
+                ),
+              ),
             ),
           ),
         ],
