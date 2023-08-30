@@ -1,6 +1,7 @@
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:threads_challenge/post/bottom_sheet_screen.dart';
 
 class PostWidget extends StatelessWidget {
   final String userName, description, time;
@@ -15,6 +16,15 @@ class PostWidget extends StatelessWidget {
       required this.replies,
       required this.likes,
       required this.photos});
+
+  void _onEllipsisTap(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      showDragHandle: true,
+      // backgroundColor: Colors.amber,
+      builder: (context) => const BottomSheetScreen(),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -65,9 +75,12 @@ class PostWidget extends StatelessWidget {
                           const SizedBox(
                             width: 15,
                           ),
-                          const FaIcon(
-                            FontAwesomeIcons.ellipsis,
-                            size: 15,
+                          GestureDetector(
+                            onTap: () => _onEllipsisTap(context),
+                            child: const FaIcon(
+                              FontAwesomeIcons.ellipsis,
+                              size: 15,
+                            ),
                           ),
                         ],
                       ),
