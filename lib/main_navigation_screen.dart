@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:threads_challenge/post/post_timeline_screen.dart';
 
+import 'package:threads_challenge/write/write_screen.dart';
+
 class MainNavigationScreen extends StatefulWidget {
   const MainNavigationScreen({super.key});
 
@@ -13,9 +15,20 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
   int _selectedIndex = 0;
 
   void _onTap(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+    if (index == 2) {
+      showModalBottomSheet(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15.0),
+        ),
+        isScrollControlled: true,
+        context: context,
+        builder: (context) => const WriteScreen(),
+      );
+    } else {
+      setState(() {
+        _selectedIndex = index;
+      });
+    }
   }
 
   @override
@@ -48,17 +61,10 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
               ),
             ),
           ),
-          Offstage(
-            offstage: _selectedIndex != 2,
-            child: const Center(
-              child: Text(
-                "Add",
-                style: TextStyle(
-                  fontSize: 50,
-                ),
-              ),
-            ),
-          ),
+          // Offstage(
+          //   offstage: _selectedIndex != 2,
+          //   child: const WriteScreen(),
+          // ),
           Offstage(
             offstage: _selectedIndex != 3,
             child: const Center(
