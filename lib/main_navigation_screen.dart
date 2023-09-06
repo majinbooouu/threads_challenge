@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:threads_challenge/activity/activity_screen.dart';
 import 'package:threads_challenge/post/post_timeline_screen.dart';
+import 'package:threads_challenge/profile/profile_screen.dart';
+import 'package:threads_challenge/search/search_screen.dart';
 
 import 'package:threads_challenge/write/write_screen.dart';
 
 class MainNavigationScreen extends StatefulWidget {
+  static const routeName = "/mainNav";
   const MainNavigationScreen({super.key});
 
   @override
@@ -25,25 +29,25 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
         builder: (context) => const WriteScreen(),
       );
     } else {
-      setState(() {
-        _selectedIndex = index;
-      });
+      setState(() {});
+      _selectedIndex = index;
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        title: const FaIcon(
-          FontAwesomeIcons.at,
-          color: Colors.black,
-          size: 40,
-        ),
-        elevation: 0,
-        backgroundColor: Colors.white,
-      ),
+      appBar: _selectedIndex == 0
+          ? AppBar(
+              title: const FaIcon(
+                FontAwesomeIcons.at,
+                color: Colors.black,
+                size: 40,
+              ),
+              elevation: 0,
+              backgroundColor: const Color(0xfffafafa),
+            )
+          : null,
       body: Stack(
         children: [
           Offstage(
@@ -52,14 +56,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
           ),
           Offstage(
             offstage: _selectedIndex != 1,
-            child: const Center(
-              child: Text(
-                "Searching",
-                style: TextStyle(
-                  fontSize: 50,
-                ),
-              ),
-            ),
+            child: const SearchScreen(),
           ),
           // Offstage(
           //   offstage: _selectedIndex != 2,
@@ -67,32 +64,18 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
           // ),
           Offstage(
             offstage: _selectedIndex != 3,
-            child: const Center(
-              child: Text(
-                "Likes",
-                style: TextStyle(
-                  fontSize: 50,
-                ),
-              ),
-            ),
+            child: const ActivityScreen(),
           ),
           Offstage(
             offstage: _selectedIndex != 4,
-            child: const Center(
-              child: Text(
-                "Profile",
-                style: TextStyle(
-                  fontSize: 50,
-                ),
-              ),
-            ),
+            child: const ProfileScreen(),
           ),
         ],
       ),
       bottomNavigationBar: NavigationBar(
         onDestinationSelected: (value) => _onTap(value),
         labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
-        backgroundColor: Colors.white,
+        backgroundColor: const Color(0xfffafafa),
         indicatorColor: Colors.white,
         shadowColor: Colors.white,
         selectedIndex: _selectedIndex,

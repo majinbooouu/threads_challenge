@@ -10,17 +10,28 @@ class WriteScreen extends StatefulWidget {
 }
 
 class _WriteScreenState extends State<WriteScreen> {
+  late final Faker _faker;
+  late final NetworkImage _networkImage = NetworkImage(
+    _faker.image.image(
+      keywords: ['man'],
+      random: true,
+      width: 1280,
+      height: 960,
+    ),
+  );
+
   bool _isTextFilled = false;
+  final TextEditingController _textEditingController = TextEditingController();
+
   void _onCancelTap(BuildContext context) {
     Navigator.of(context).pop();
   }
-
-  final TextEditingController _textEditingController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
     _textEditingController.addListener(_onTextChanged);
+    _faker = Faker();
   }
 
   void _onTextChanged() {
@@ -85,16 +96,7 @@ class _WriteScreenState extends State<WriteScreen> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        CircleAvatar(
-                          backgroundImage: NetworkImage(
-                            Faker().image.image(
-                              keywords: ['man'],
-                              random: true,
-                              width: 1280,
-                              height: 960,
-                            ),
-                          ),
-                        ),
+                        CircleAvatar(backgroundImage: _networkImage),
                         const SizedBox(
                           width: 15,
                         ),
@@ -140,14 +142,7 @@ class _WriteScreenState extends State<WriteScreen> {
                             Positioned(
                               left: 9,
                               child: CircleAvatar(
-                                backgroundImage: NetworkImage(
-                                  faker.image.image(
-                                    keywords: ['people'],
-                                    random: true,
-                                    width: 1280,
-                                    height: 960,
-                                  ),
-                                ),
+                                backgroundImage: _networkImage,
                                 radius: 10,
                               ),
                             ),
@@ -188,8 +183,7 @@ class _WriteScreenState extends State<WriteScreen> {
                                 shape: MaterialStateProperty.all<
                                     RoundedRectangleBorder>(
                                   RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(
-                                        20), // Adjust the radius as needed
+                                    borderRadius: BorderRadius.circular(20),
                                   ),
                                 )),
                             child: const Text(

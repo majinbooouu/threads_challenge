@@ -28,6 +28,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  intl: ^0.18.1
   font_awesome_flutter: ^10.5.0
   faker: ^2.1.0
   flutter:
