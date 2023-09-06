@@ -52,7 +52,7 @@ class ProfileScreen extends StatelessWidget {
                   padding: const EdgeInsets.only(
                     top: 10,
                     right: 15,
-                    left: 15,
+                    left: 16,
                   ),
                   child: GestureDetector(
                     onTap: () => _onSettingTap(context),
