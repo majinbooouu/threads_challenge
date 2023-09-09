@@ -1,9 +1,18 @@
+import 'dart:io';
+
+import 'package:camera/camera.dart';
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:threads_challenge/main_navigation_screen.dart';
+import 'package:threads_challenge/write/video_recording_screen.dart';
 
 class WriteScreen extends StatefulWidget {
-  const WriteScreen({super.key});
+  final XFile? photo;
+  const WriteScreen({
+    super.key,
+    required this.photo,
+  });
 
   @override
   State<WriteScreen> createState() => _WriteScreenState();
@@ -21,10 +30,19 @@ class _WriteScreenState extends State<WriteScreen> {
   );
 
   bool _isTextFilled = false;
+
   final TextEditingController _textEditingController = TextEditingController();
 
   void _onCancelTap(BuildContext context) {
-    Navigator.of(context).pop();
+    Navigator.of(context).pushNamed(
+      MainNavigationScreen.routeName,
+    );
+  }
+
+  void _onClipTap(BuildContext context) {
+    Navigator.of(context).pushNamed(
+      VideoRecordingScreen.routeName,
+    );
   }
 
   @override
@@ -121,11 +139,35 @@ class _WriteScreenState extends State<WriteScreen> {
                                   ),
                                 ),
                               ),
-                              const FaIcon(
-                                FontAwesomeIcons.link,
-                                size: 15,
-                                color: Colors.grey,
-                              ),
+                              widget.photo != null
+                                  ? FractionallySizedBox(
+                                      widthFactor: 1,
+                                      child: Container(
+                                        clipBehavior: Clip.hardEdge,
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(
+                                            20,
+                                          ),
+                                          border: Border.all(
+                                            color: Colors.grey,
+                                            width: 1,
+                                          ),
+                                        ),
+                                        height: 300,
+                                        child: Image.file(
+                                          File(widget.photo!.path),
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                    )
+                                  : GestureDetector(
+                                      onTap: () => _onClipTap(context),
+                                      child: const FaIcon(
+                                        FontAwesomeIcons.link,
+                                        size: 15,
+                                        color: Colors.grey,
+                                      ),
+                                    ),
                             ],
                           ),
                         )

@@ -26,7 +26,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
         ),
         isScrollControlled: true,
         context: context,
-        builder: (context) => const WriteScreen(),
+        builder: (context) => const WriteScreen(photo: null),
       );
     } else {
       setState(() {});

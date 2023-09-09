@@ -31,6 +31,9 @@ dependencies:
   intl: ^0.18.1
   font_awesome_flutter: ^10.5.0
   faker: ^2.1.0
+  camera: ^0.10.3
+  permission_handler: ^10.2.0
+  image_picker: 0.8.6+1
   flutter:
     sdk: flutter
 
