@@ -56,6 +56,8 @@ var db = [
 ];
 
 class SearchScreen extends StatelessWidget {
+  static const routeName = "search";
+  static const routeURL = "/search";
   const SearchScreen({super.key});
 
   @override
@@ -64,10 +66,10 @@ class SearchScreen extends StatelessWidget {
       appBar: AppBar(
         toolbarHeight: 65,
         elevation: 0,
-        backgroundColor: const Color(0xfffafafa),
+        backgroundColor: Theme.of(context).colorScheme.background,
         leadingWidth: 200,
-        leading: const Padding(
-          padding: EdgeInsets.symmetric(
+        leading: Padding(
+          padding: const EdgeInsets.symmetric(
             horizontal: 20,
             vertical: 10,
           ),
@@ -75,7 +77,7 @@ class SearchScreen extends StatelessWidget {
             "Search",
             style: TextStyle(
               fontSize: 30,
-              color: Colors.black,
+              color: Theme.of(context).colorScheme.inverseSurface,
               fontWeight: FontWeight.w900,
             ),
           ),

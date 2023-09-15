@@ -164,8 +164,8 @@ class PostWidget extends StatelessWidget {
             if (replies > 2)
               Stack(
                 children: [
-                  const CircleAvatar(
-                    backgroundColor: Colors.white,
+                  CircleAvatar(
+                    backgroundColor: Theme.of(context).colorScheme.background,
                     radius: 20,
                   ),
                   Positioned(
@@ -216,8 +216,8 @@ class PostWidget extends StatelessWidget {
             if (replies <= 2)
               Stack(
                 children: [
-                  const CircleAvatar(
-                    backgroundColor: Colors.white,
+                  CircleAvatar(
+                    backgroundColor: Theme.of(context).colorScheme.background,
                     radius: 20,
                   ),
                   Positioned(
@@ -241,7 +241,7 @@ class PostWidget extends StatelessWidget {
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         border: Border.all(
-                          color: Colors.white,
+                          color: Theme.of(context).colorScheme.background,
                           width: 5.0,
                         ),
                       ),

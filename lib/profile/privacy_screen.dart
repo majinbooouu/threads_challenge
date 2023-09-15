@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class PrivacyScreen extends StatefulWidget {
-  static const routeName = "/privacy";
+  static const routeURL = "privacy";
+  static const routeName = "privacy";
   const PrivacyScreen({super.key});
 
   @override
@@ -18,10 +19,8 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
     return Scaffold(
       appBar: AppBar(
         elevation: 1,
-        foregroundColor: Colors.black,
-        backgroundColor: const Color(
-          0xfffafafa,
-        ),
+        // foregroundColor: Colors.black,
+        backgroundColor: Theme.of(context).colorScheme.onError,
         title: const Text(
           "Privacy",
           style: TextStyle(
@@ -52,17 +51,17 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
                       _isSwitched = value;
                     });
                   },
-                  secondary: const FaIcon(
+                  secondary: FaIcon(
                     FontAwesomeIcons.lock,
-                    color: Colors.black,
+                    color: Theme.of(context).colorScheme.onSurface,
                   ),
                   activeColor: Colors.green,
                   inactiveThumbColor: Colors.red,
                 ),
                 ListTile(
-                  leading: const FaIcon(
+                  leading: FaIcon(
                     FontAwesomeIcons.lock,
-                    color: Colors.black,
+                    color: Theme.of(context).colorScheme.onSurface,
                     size: 26,
                   ),
                   title: const Text(
@@ -82,19 +81,19 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
                     activeColor: Colors.black,
                   ),
                 ),
-                const ListTile(
+                ListTile(
                   leading: FaIcon(
                     FontAwesomeIcons.at,
-                    color: Colors.black,
+                    color: Theme.of(context).colorScheme.onSurface,
                     size: 26,
                   ),
-                  title: Text(
+                  title: const Text(
                     "Mentions",
                     style: TextStyle(
                       fontSize: 20,
                     ),
                   ),
-                  trailing: Row(
+                  trailing: const Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Text(
@@ -114,53 +113,53 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
                     ],
                   ),
                 ),
-                const ListTile(
+                ListTile(
                   leading: FaIcon(
                     FontAwesomeIcons.bellSlash,
-                    color: Colors.black,
+                    color: Theme.of(context).colorScheme.onSurface,
                     size: 26,
                   ),
-                  title: Text(
+                  title: const Text(
                     "Muted",
                     style: TextStyle(
                       fontSize: 20,
                     ),
                   ),
-                  trailing: FaIcon(
+                  trailing: const FaIcon(
                     FontAwesomeIcons.chevronRight,
                     color: Colors.grey,
                   ),
                 ),
-                const ListTile(
+                ListTile(
                   leading: FaIcon(
                     FontAwesomeIcons.eyeSlash,
-                    color: Colors.black,
+                    color: Theme.of(context).colorScheme.onSurface,
                     size: 26,
                   ),
-                  title: Text(
+                  title: const Text(
                     "Hidden Words",
                     style: TextStyle(
                       fontSize: 20,
                     ),
                   ),
-                  trailing: FaIcon(
+                  trailing: const FaIcon(
                     FontAwesomeIcons.chevronRight,
                     color: Colors.grey,
                   ),
                 ),
-                const ListTile(
+                ListTile(
                   leading: FaIcon(
                     FontAwesomeIcons.peopleGroup,
-                    color: Colors.black,
+                    color: Theme.of(context).colorScheme.onSurface,
                     size: 26,
                   ),
-                  title: Text(
+                  title: const Text(
                     "Profiles you follow",
                     style: TextStyle(
                       fontSize: 20,
                     ),
                   ),
-                  trailing: FaIcon(
+                  trailing: const FaIcon(
                     FontAwesomeIcons.chevronRight,
                     color: Colors.grey,
                   ),
@@ -169,13 +168,13 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
             ),
           ),
           const Divider(),
-          const Padding(
-            padding: EdgeInsets.symmetric(
+          Padding(
+            padding: const EdgeInsets.symmetric(
               horizontal: 10,
             ),
             child: Column(
               children: [
-                ListTile(
+                const ListTile(
                   title: Text(
                     "Other privacy settings",
                     style: TextStyle(
@@ -197,16 +196,16 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
                 ListTile(
                   leading: FaIcon(
                     FontAwesomeIcons.circleXmark,
-                    color: Colors.black,
+                    color: Theme.of(context).colorScheme.onSurface,
                     size: 26,
                   ),
-                  title: Text(
+                  title: const Text(
                     "Blocked profiles",
                     style: TextStyle(
                       fontSize: 20,
                     ),
                   ),
-                  trailing: FaIcon(
+                  trailing: const FaIcon(
                     FontAwesomeIcons.arrowUpRightFromSquare,
                     color: Colors.grey,
                   ),
@@ -214,16 +213,16 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
                 ListTile(
                   leading: FaIcon(
                     FontAwesomeIcons.heartCircleXmark,
-                    color: Colors.black,
+                    color: Theme.of(context).colorScheme.onSurface,
                     size: 26,
                   ),
-                  title: Text(
+                  title: const Text(
                     "Hide likes",
                     style: TextStyle(
                       fontSize: 20,
                     ),
                   ),
-                  trailing: FaIcon(
+                  trailing: const FaIcon(
                     FontAwesomeIcons.arrowUpRightFromSquare,
                     color: Colors.grey,
                   ),

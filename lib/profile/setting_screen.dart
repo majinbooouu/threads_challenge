@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:threads_challenge/profile/privacy_screen.dart';
 
 class SettingScreen extends StatelessWidget {
-  static const routeName = "/setting";
+  static const routeURL = "/setting";
+  static const routeName = "setting";
   const SettingScreen({super.key});
 
   void _onPrivacyTap(BuildContext context) {
-    Navigator.of(context).pushNamed(
-      PrivacyScreen.routeName,
-    );
+    context.pushNamed(PrivacyScreen.routeName);
   }
 
   void _showLogoutDialog(BuildContext context) {
@@ -43,10 +43,8 @@ class SettingScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 1,
-        foregroundColor: Colors.black,
-        backgroundColor: const Color(
-          0xfffafafa,
-        ),
+        // foregroundColor: Theme.of(context).colorScheme.background,
+        backgroundColor: Theme.of(context).colorScheme.onError,
         title: const Text(
           "Settings",
           style: TextStyle(
@@ -64,26 +62,26 @@ class SettingScreen extends StatelessWidget {
             ),
             child: Column(
               children: [
-                const ListTile(
+                ListTile(
                   leading: FaIcon(
                     FontAwesomeIcons.personCirclePlus,
-                    color: Colors.black,
+                    color: Theme.of(context).colorScheme.onSurface,
                     size: 26,
                   ),
-                  title: Text(
+                  title: const Text(
                     "Follow and invite friends",
                     style: TextStyle(
                       fontSize: 20,
                     ),
                   ),
                 ),
-                const ListTile(
+                ListTile(
                   leading: FaIcon(
                     FontAwesomeIcons.bell,
-                    color: Colors.black,
+                    color: Theme.of(context).colorScheme.onSurface,
                     size: 26,
                   ),
-                  title: Text(
+                  title: const Text(
                     "Notifications",
                     style: TextStyle(
                       fontSize: 20,
@@ -91,9 +89,9 @@ class SettingScreen extends StatelessWidget {
                   ),
                 ),
                 ListTile(
-                  leading: const FaIcon(
+                  leading: FaIcon(
                     FontAwesomeIcons.lock,
-                    color: Colors.black,
+                    color: Theme.of(context).colorScheme.onSurface,
                     size: 26,
                   ),
                   title: GestureDetector(
@@ -106,39 +104,39 @@ class SettingScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                const ListTile(
+                ListTile(
                   leading: FaIcon(
                     FontAwesomeIcons.user,
-                    color: Colors.black,
+                    color: Theme.of(context).colorScheme.onSurface,
                     size: 26,
                   ),
-                  title: Text(
+                  title: const Text(
                     "Account",
                     style: TextStyle(
                       fontSize: 20,
                     ),
                   ),
                 ),
-                const ListTile(
+                ListTile(
                   leading: FaIcon(
                     FontAwesomeIcons.hand,
-                    color: Colors.black,
+                    color: Theme.of(context).colorScheme.onSurface,
                     size: 26,
                   ),
-                  title: Text(
+                  title: const Text(
                     "Help",
                     style: TextStyle(
                       fontSize: 20,
                     ),
                   ),
                 ),
-                const ListTile(
+                ListTile(
                   leading: FaIcon(
                     FontAwesomeIcons.database,
-                    color: Colors.black,
+                    color: Theme.of(context).colorScheme.onSurface,
                     size: 26,
                   ),
-                  title: Text(
+                  title: const Text(
                     "About",
                     style: TextStyle(
                       fontSize: 20,

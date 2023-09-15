@@ -7,7 +7,8 @@ import 'package:threads_challenge/write/preview_screen.dart';
 import 'package:threads_challenge/write/write_screen.dart';
 
 class VideoRecordingScreen extends StatefulWidget {
-  static const routeName = "/recording";
+  static const routeURL = "/recording";
+  static const routeName = "recording";
   const VideoRecordingScreen({super.key});
 
   @override

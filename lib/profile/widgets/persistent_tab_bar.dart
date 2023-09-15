@@ -6,7 +6,7 @@ class PersistentTabBar extends SliverPersistentHeaderDelegate {
       BuildContext context, double shrinkOffset, bool overlapsContent) {
     return Container(
       decoration: BoxDecoration(
-        color: const Color(0xfffafafa),
+        color: Theme.of(context).colorScheme.background,
         border: Border.symmetric(
           horizontal: BorderSide(
             color: Colors.grey.shade200,
@@ -14,15 +14,15 @@ class PersistentTabBar extends SliverPersistentHeaderDelegate {
           ),
         ),
       ),
-      child: const TabBar(
+      child: TabBar(
         indicatorSize: TabBarIndicatorSize.tab,
-        indicatorColor: Colors.black,
-        unselectedLabelColor: Colors.grey,
-        labelPadding: EdgeInsets.symmetric(
+        indicatorColor: Theme.of(context).colorScheme.inverseSurface,
+        unselectedLabelColor: Theme.of(context).colorScheme.inversePrimary,
+        labelPadding: const EdgeInsets.symmetric(
           vertical: 10,
         ),
-        labelColor: Colors.black,
-        tabs: [
+        labelColor: Theme.of(context).colorScheme.onSurface,
+        tabs: const [
           Padding(
             padding: EdgeInsets.symmetric(
               horizontal: 20,

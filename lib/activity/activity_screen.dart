@@ -63,6 +63,8 @@ var db = [
 var tabs = ["All", "Replies", "Mentions", "Repost", "verified"];
 
 class ActivityScreen extends StatefulWidget {
+  static const routeName = "activity";
+  static const routeURL = "/activity";
   const ActivityScreen({super.key});
 
   @override
@@ -85,10 +87,10 @@ class _ActivityScreenState extends State<ActivityScreen> {
         appBar: AppBar(
             toolbarHeight: 65,
             elevation: 0,
-            backgroundColor: const Color(0xfffafafa),
+            backgroundColor: Theme.of(context).colorScheme.background,
             leadingWidth: 200,
-            leading: const Padding(
-              padding: EdgeInsets.symmetric(
+            leading: Padding(
+              padding: const EdgeInsets.symmetric(
                 horizontal: 20,
                 vertical: 10,
               ),
@@ -96,7 +98,7 @@ class _ActivityScreenState extends State<ActivityScreen> {
                 "Activity",
                 style: TextStyle(
                   fontSize: 30,
-                  color: Colors.black,
+                  color: Theme.of(context).colorScheme.inverseSurface,
                   fontWeight: FontWeight.w900,
                 ),
               ),

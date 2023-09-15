@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:threads_challenge/activity/activity_screen.dart';
 import 'package:threads_challenge/post/post_timeline_screen.dart';
 import 'package:threads_challenge/profile/profile_screen.dart';
@@ -8,15 +9,28 @@ import 'package:threads_challenge/search/search_screen.dart';
 import 'package:threads_challenge/write/write_screen.dart';
 
 class MainNavigationScreen extends StatefulWidget {
-  static const routeName = "/mainNav";
-  const MainNavigationScreen({super.key});
+  static const routeName = "home";
+  static const routeURL = "/";
+  final String tab;
+  const MainNavigationScreen({
+    super.key,
+    required this.tab,
+  });
 
   @override
   State<MainNavigationScreen> createState() => _MainNavigationScreenState();
 }
 
 class _MainNavigationScreenState extends State<MainNavigationScreen> {
-  int _selectedIndex = 0;
+  final List<String> _tabs = [
+    "home",
+    "search",
+    "xxxx",
+    "activity",
+    "profile",
+  ];
+
+  late int _selectedIndex = _tabs.indexOf(widget.tab);
 
   void _onTap(int index) {
     if (index == 2) {
@@ -29,6 +43,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
         builder: (context) => const WriteScreen(photo: null),
       );
     } else {
+      context.go("/${_tabs[index]}");
       setState(() {});
       _selectedIndex = index;
     }
@@ -39,13 +54,13 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
     return Scaffold(
       appBar: _selectedIndex == 0
           ? AppBar(
-              title: const FaIcon(
+              title: FaIcon(
                 FontAwesomeIcons.at,
-                color: Colors.black,
+                color: Theme.of(context).colorScheme.onSurface,
                 size: 40,
               ),
               elevation: 0,
-              backgroundColor: const Color(0xfffafafa),
+              // backgroundColor: Theme.of(context).colorScheme.onPrimary,
             )
           : null,
       body: Stack(
@@ -75,9 +90,9 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
       bottomNavigationBar: NavigationBar(
         onDestinationSelected: (value) => _onTap(value),
         labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
-        backgroundColor: const Color(0xfffafafa),
-        indicatorColor: Colors.white,
-        shadowColor: Colors.white,
+        // backgroundColor: const Color(0xfffafafa),
+        // indicatorColor: Colors.white,
+        // shadowColor: Colors.white,
         selectedIndex: _selectedIndex,
         destinations: const [
           NavigationDestination(

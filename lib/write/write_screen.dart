@@ -34,7 +34,7 @@ class _WriteScreenState extends State<WriteScreen> {
   final TextEditingController _textEditingController = TextEditingController();
 
   void _onCancelTap(BuildContext context) {
-    Navigator.of(context).pushNamed(
+    Navigator.of(context).pop(
       MainNavigationScreen.routeName,
     );
   }
@@ -72,27 +72,27 @@ class _WriteScreenState extends State<WriteScreen> {
         child: Scaffold(
           appBar: AppBar(
             elevation: 0,
-            backgroundColor: const Color(0xfffafafa),
+            backgroundColor: Theme.of(context).colorScheme.background,
             automaticallyImplyLeading: false,
             leadingWidth: 100,
             leading: GestureDetector(
               onTap: () => _onCancelTap(context),
               child: Transform.translate(
                 offset: const Offset(10, 25),
-                child: const Text(
+                child: Text(
                   'Cancel',
                   style: TextStyle(
-                    color: Colors.black,
+                    color: Theme.of(context).colorScheme.onSurface,
                     fontSize: 18,
                   ),
                 ),
               ),
             ),
             toolbarHeight: 70,
-            title: const Text(
+            title: Text(
               "New thread",
               style: TextStyle(
-                color: Colors.black,
+                color: Theme.of(context).colorScheme.onSurface,
               ),
             ),
             bottom: PreferredSize(

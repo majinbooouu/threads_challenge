@@ -1,18 +1,19 @@
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:threads_challenge/post/post_timeline_screen.dart';
 import 'package:threads_challenge/post/widgets/post_widget.dart';
 import 'package:threads_challenge/profile/setting_screen.dart';
 import 'package:threads_challenge/profile/widgets/persistent_tab_bar.dart';
 
 class ProfileScreen extends StatelessWidget {
+  static const routeURL = "/profile";
+  static const routeName = "profile";
   const ProfileScreen({super.key});
 
   void _onSettingTap(BuildContext context) {
-    Navigator.of(context).pushNamed(
-      SettingScreen.routeName,
-    );
+    context.push(SettingScreen.routeURL);
   }
 
   @override
@@ -23,7 +24,7 @@ class ProfileScreen extends StatelessWidget {
         child: NestedScrollView(
           headerSliverBuilder: (context, innerBoxIsScrolled) => [
             SliverAppBar(
-              backgroundColor: const Color(0xfffafafa),
+              backgroundColor: Theme.of(context).colorScheme.background,
               // backgroundColor: Colors.amber,
               foregroundColor: Colors.black,
               elevation: 0,
@@ -103,7 +104,9 @@ class ProfileScreen extends StatelessWidget {
                                   alignment: Alignment.center,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(20),
-                                    color: Colors.grey.shade200,
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .surfaceVariant,
                                   ),
                                   child: const Text(
                                     "threads.net",
@@ -150,8 +153,9 @@ class ProfileScreen extends StatelessWidget {
                       children: [
                         Stack(
                           children: [
-                            const CircleAvatar(
-                              backgroundColor: Colors.white,
+                            CircleAvatar(
+                              backgroundColor:
+                                  Theme.of(context).colorScheme.background,
                               radius: 20,
                             ),
                             Positioned(
@@ -175,7 +179,9 @@ class ProfileScreen extends StatelessWidget {
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
                                   border: Border.all(
-                                    color: Colors.white,
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .background,
                                     width: 2.0,
                                   ),
                                 ),
@@ -230,11 +236,13 @@ class ProfileScreen extends StatelessWidget {
                                     Radius.circular(10),
                                   ),
                                 ),
-                                child: const Text(
+                                child: Text(
                                   'Edit profile',
                                   style: TextStyle(
                                     fontSize: 20,
-                                    color: Colors.black,
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .inverseSurface,
                                     fontWeight: FontWeight.w500,
                                   ),
                                   textAlign: TextAlign.center,
@@ -267,11 +275,13 @@ class ProfileScreen extends StatelessWidget {
                                     Radius.circular(10),
                                   ),
                                 ),
-                                child: const Text(
+                                child: Text(
                                   'Share profile',
                                   style: TextStyle(
                                     fontSize: 20,
-                                    color: Colors.black,
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .inverseSurface,
                                     fontWeight: FontWeight.w500,
                                   ),
                                   textAlign: TextAlign.center,
