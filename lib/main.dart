@@ -1,10 +1,7 @@
-import 'package:camera/camera.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:threads_challenge/common/widgets/video_config.dart';
-import 'package:threads_challenge/models/darkmode_config_model.dart';
 import 'package:threads_challenge/repos/darkmode_config_repo.dart';
 import 'package:threads_challenge/router.dart';
 import 'package:threads_challenge/view_models/darkmode_config_vm.dart';
