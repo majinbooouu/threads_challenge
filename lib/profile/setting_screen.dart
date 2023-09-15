@@ -1,6 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
+import 'package:threads_challenge/common/widgets/video_config.dart';
 import 'package:threads_challenge/profile/privacy_screen.dart';
 
 class SettingScreen extends StatelessWidget {
@@ -62,6 +65,27 @@ class SettingScreen extends StatelessWidget {
             ),
             child: Column(
               children: [
+                ListTile(
+                  leading: FaIcon(
+                    FontAwesomeIcons.lock,
+                    color: Theme.of(context).colorScheme.onSurface,
+                    size: 26,
+                  ),
+                  title: const Text(
+                    "Dark Mode?",
+                    style: TextStyle(
+                      fontSize: 20,
+                    ),
+                  ),
+                  trailing: CupertinoSwitch(
+                    value: context.watch<VideoConfig>().isDarkMode,
+                    onChanged: (value) {
+                      context.read<VideoConfig>().toggleIsDarkMode();
+                    },
+                    // trackColor: Colors.grey,
+                    // activeColor: Colors.black,
+                  ),
+                ),
                 ListTile(
                   leading: FaIcon(
                     FontAwesomeIcons.personCirclePlus,

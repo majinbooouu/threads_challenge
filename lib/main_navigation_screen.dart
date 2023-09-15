@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 import 'package:threads_challenge/activity/activity_screen.dart';
+import 'package:threads_challenge/common/widgets/video_config.dart';
 import 'package:threads_challenge/post/post_timeline_screen.dart';
 import 'package:threads_challenge/profile/profile_screen.dart';
 import 'package:threads_challenge/search/search_screen.dart';
@@ -54,6 +56,16 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
     return Scaffold(
       appBar: _selectedIndex == 0
           ? AppBar(
+              actions: [
+                IconButton(
+                  onPressed: () {
+                    context.read<VideoConfig>().toggleIsDarkMode();
+                  },
+                  icon: context.watch<VideoConfig>().isDarkMode
+                      ? const FaIcon(FontAwesomeIcons.moon)
+                      : const FaIcon(FontAwesomeIcons.sun),
+                ),
+              ],
               title: FaIcon(
                 FontAwesomeIcons.at,
                 color: Theme.of(context).colorScheme.onSurface,
