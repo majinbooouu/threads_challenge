@@ -58,10 +58,8 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
           ? AppBar(
               actions: [
                 IconButton(
-                  onPressed: () {
-                    context.read<VideoConfig>().toggleIsDarkMode();
-                  },
-                  icon: context.watch<VideoConfig>().isDarkMode
+                  onPressed: () {},
+                  icon: false
                       ? const FaIcon(FontAwesomeIcons.moon)
                       : const FaIcon(FontAwesomeIcons.sun),
                 ),

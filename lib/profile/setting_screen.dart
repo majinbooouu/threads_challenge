@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:threads_challenge/common/widgets/video_config.dart';
 import 'package:threads_challenge/profile/privacy_screen.dart';
+import 'package:threads_challenge/view_models/darkmode_config_vm.dart';
 
 class SettingScreen extends StatelessWidget {
   static const routeURL = "/setting";
@@ -78,9 +79,9 @@ class SettingScreen extends StatelessWidget {
                     ),
                   ),
                   trailing: CupertinoSwitch(
-                    value: context.watch<VideoConfig>().isDarkMode,
+                    value: context.watch<DarkModeConfigViewModel>().darked,
                     onChanged: (value) {
-                      context.read<VideoConfig>().toggleIsDarkMode();
+                      context.read<DarkModeConfigViewModel>().setDarked(value);
                     },
                     // trackColor: Colors.grey,
                     // activeColor: Colors.black,
