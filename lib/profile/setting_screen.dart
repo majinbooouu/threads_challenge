@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
@@ -7,7 +8,7 @@ import 'package:threads_challenge/common/widgets/video_config.dart';
 import 'package:threads_challenge/profile/privacy_screen.dart';
 import 'package:threads_challenge/view_models/darkmode_config_vm.dart';
 
-class SettingScreen extends StatelessWidget {
+class SettingScreen extends ConsumerWidget {
   static const routeURL = "/setting";
   static const routeName = "setting";
   const SettingScreen({super.key});
@@ -43,7 +44,7 @@ class SettingScreen extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
         elevation: 1,
@@ -79,9 +80,11 @@ class SettingScreen extends StatelessWidget {
                     ),
                   ),
                   trailing: CupertinoSwitch(
-                    value: context.watch<DarkModeConfigViewModel>().darked,
+                    value: ref.watch(darkmodeConfigProvider).dark,
                     onChanged: (value) {
-                      context.read<DarkModeConfigViewModel>().setDarked(value);
+                      ref
+                          .read(darkmodeConfigProvider.notifier)
+                          .setDarked(value);
                     },
                     // trackColor: Colors.grey,
                     // activeColor: Colors.black,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
@@ -7,10 +8,11 @@ import 'package:threads_challenge/common/widgets/video_config.dart';
 import 'package:threads_challenge/post/post_timeline_screen.dart';
 import 'package:threads_challenge/profile/profile_screen.dart';
 import 'package:threads_challenge/search/search_screen.dart';
+import 'package:threads_challenge/view_models/darkmode_config_vm.dart';
 
 import 'package:threads_challenge/write/write_screen.dart';
 
-class MainNavigationScreen extends StatefulWidget {
+class MainNavigationScreen extends ConsumerStatefulWidget {
   static const routeName = "home";
   static const routeURL = "/";
   final String tab;
@@ -20,10 +22,10 @@ class MainNavigationScreen extends StatefulWidget {
   });
 
   @override
-  State<MainNavigationScreen> createState() => _MainNavigationScreenState();
+  MainNavigationScreenState createState() => MainNavigationScreenState();
 }
 
-class _MainNavigationScreenState extends State<MainNavigationScreen> {
+class MainNavigationScreenState extends ConsumerState<MainNavigationScreen> {
   final List<String> _tabs = [
     "home",
     "search",
@@ -58,8 +60,10 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
           ? AppBar(
               actions: [
                 IconButton(
-                  onPressed: () {},
-                  icon: false
+                  onPressed: () => ref
+                      .read(darkmodeConfigProvider.notifier)
+                      .setDarked(!ref.watch(darkmodeConfigProvider).dark),
+                  icon: ref.watch(darkmodeConfigProvider).dark
                       ? const FaIcon(FontAwesomeIcons.moon)
                       : const FaIcon(FontAwesomeIcons.sun),
                 ),

@@ -1,5 +1,6 @@
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:threads_challenge/repos/darkmode_config_repo.dart';
@@ -12,23 +13,26 @@ void main() async {
   final repository = DarModeConfigRepository(preferences);
 
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => DarkModeConfigViewModel(repository),
+    ProviderScope(
+      overrides: [
+        darkmodeConfigProvider
+            .overrideWith(() => DarkModeConfigViewModel(repository))
+      ],
       child: const ThreadsClone(),
     ),
   );
 }
 
-class ThreadsClone extends StatelessWidget {
+class ThreadsClone extends ConsumerWidget {
   const ThreadsClone({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return MaterialApp.router(
       routerConfig: router,
       debugShowCheckedModeBanner: false,
       title: 'Threads Clone',
-      themeMode: context.watch<DarkModeConfigViewModel>().darked
+      themeMode: ref.watch(darkmodeConfigProvider).dark
           ? ThemeMode.dark
           : ThemeMode.light,
       theme: FlexThemeData.light(
